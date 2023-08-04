@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract Collection is ERC721URIStorage, Ownable {
+contract NFTopia is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;    
     Counters.Counter private _tokenIds;    
     Counters.Counter private _totalMinted;        
@@ -18,7 +18,7 @@ contract Collection is ERC721URIStorage, Ownable {
     uint256 public LIMIT_PER_ADDRESS = 5;    
     uint256 public MAX_SUPPLY  = 5;    
 
-    constructor() ERC721("Collection", "NFT") {}
+    constructor() ERC721("NFTopia Native", "NFTP") {}
 
 
     function setPrice(uint256 price) external onlyOwner{        
@@ -59,5 +59,5 @@ contract Collection is ERC721URIStorage, Ownable {
     function withdrawMoney() external onlyOwner{        
         address payable to = payable(msg.sender);        
         (bool success, bytes memory res) = to.call{value: address(this).balance}("");    
-        
+
     }}
